@@ -1,0 +1,352 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Smooth scrolling for better navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: oklch(0.98 0.005 120); /* Light mint-tinted background */
+  --foreground: oklch(0.2 0.02 140); /* Dark green-gray text */
+  --card: oklch(1 0 0 / 0.8); /* Frosted glass white with transparency */
+  --card-foreground: oklch(0.35 0.15 140); /* Medium green for card text */
+  --popover: oklch(1 0 0 / 0.9); /* Slightly more opaque for popovers */
+  --popover-foreground: oklch(0.3 0.05 140); /* Dark gray-green for popover text */
+  --primary: oklch(0.55 0.2 140); /* Agricultural green primary */
+  --primary-foreground: oklch(0.98 0.01 120); /* Light text on green */
+  --secondary: oklch(0.95 0.02 140); /* Light mint secondary */
+  --secondary-foreground: oklch(0.3 0.05 140); /* Dark text on light mint */
+  --muted: oklch(0.96 0.01 120); /* Very light muted background */
+  --muted-foreground: oklch(0.45 0.02 140); /* Muted green-gray text */
+  --accent: oklch(0.55 0.2 140); /* Green accent matching primary */
+  --accent-foreground: oklch(0.98 0.01 120); /* Light text on accent */
+  --destructive: oklch(0.55 0.2 15); /* Red for destructive actions */
+  --destructive-foreground: oklch(0.98 0.01 15); /* Light text on red */
+  --border: oklch(0.85 0.01 140 / 0.2); /* Subtle green-tinted border */
+  --input: oklch(1 0 0 / 0.8); /* Frosted glass input fields */
+  --ring: oklch(0.55 0.2 140 / 0.5); /* Green focus ring */
+  --chart-1: oklch(0.55 0.2 140); /* Primary green for charts */
+  --chart-2: oklch(0.65 0.15 160); /* Teal variation */
+  --chart-3: oklch(0.45 0.25 120); /* Darker green */
+  --chart-4: oklch(0.75 0.1 180); /* Light blue-green */
+  --chart-5: oklch(0.35 0.3 100); /* Deep forest green */
+  --radius: 0.75rem; /* Larger radius for softer glassmorphic look */
+  --sidebar: oklch(1 0 0 / 0.8); /* Frosted glass sidebar */
+  --sidebar-foreground: oklch(0.3 0.05 140); /* Dark text in sidebar */
+  --sidebar-primary: oklch(0.95 0.02 140); /* Light mint for sidebar primary */
+  --sidebar-primary-foreground: oklch(0.35 0.15 140); /* Green text */
+  --sidebar-accent: oklch(0.55 0.2 140); /* Green accent in sidebar */
+  --sidebar-accent-foreground: oklch(0.98 0.01 120); /* Light text on accent */
+  --sidebar-border: oklch(0.85 0.01 140 / 0.2); /* Subtle sidebar border */
+  --sidebar-ring: oklch(0.55 0.2 140 / 0.5); /* Green focus ring in sidebar */
+}
+
+.dark {
+  --background: oklch(0.12 0.02 140); /* Dark green-tinted background */
+  --foreground: oklch(0.95 0.01 120); /* Light mint text */
+  --card: oklch(0.15 0.02 140 / 0.8); /* Dark frosted glass cards */
+  --card-foreground: oklch(0.85 0.05 140); /* Light green text on dark cards */
+  --popover: oklch(0.15 0.02 140 / 0.9); /* Dark popover background */
+  --popover-foreground: oklch(0.9 0.02 140); /* Light popover text */
+  --primary: oklch(0.65 0.18 140); /* Brighter green for dark mode */
+  --primary-foreground: oklch(0.1 0.02 140); /* Dark text on bright green */
+  --secondary: oklch(0.2 0.03 140); /* Dark secondary background */
+  --secondary-foreground: oklch(0.85 0.05 140); /* Light secondary text */
+  --muted: oklch(0.18 0.02 140); /* Dark muted background */
+  --muted-foreground: oklch(0.65 0.05 140); /* Muted light text */
+  --accent: oklch(0.65 0.18 140); /* Bright green accent */
+  --accent-foreground: oklch(0.1 0.02 140); /* Dark text on accent */
+  --destructive: oklch(0.6 0.2 15); /* Bright red for dark mode */
+  --destructive-foreground: oklch(0.95 0.01 15); /* Light text on red */
+  --border: oklch(0.25 0.03 140 / 0.3); /* Subtle dark border */
+  --input: oklch(0.15 0.02 140 / 0.8); /* Dark frosted input */
+  --ring: oklch(0.65 0.18 140 / 0.6); /* Bright green focus ring */
+  --chart-1: oklch(0.65 0.18 140); /* Bright green for charts */
+  --chart-2: oklch(0.7 0.15 160); /* Bright teal */
+  --chart-3: oklch(0.55 0.2 120); /* Medium green */
+  --chart-4: oklch(0.8 0.1 180); /* Light cyan */
+  --chart-5: oklch(0.45 0.25 100); /* Forest green */
+  --sidebar: oklch(0.1 0.02 140 / 0.8); /* Dark frosted sidebar */
+  --sidebar-foreground: oklch(0.9 0.02 140); /* Light sidebar text */
+  --sidebar-primary: oklch(0.65 0.18 140); /* Bright green sidebar primary */
+  --sidebar-primary-foreground: oklch(0.1 0.02 140); /* Dark text on bright */
+  --sidebar-accent: oklch(0.2 0.03 140); /* Dark sidebar accent */
+  --sidebar-accent-foreground: oklch(0.85 0.05 140); /* Light accent text */
+  --sidebar-border: oklch(0.25 0.03 140 / 0.3); /* Dark sidebar border */
+  --sidebar-ring: oklch(0.65 0.18 140 / 0.6); /* Bright focus ring */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Base Classes */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+
+  .glass-light {
+    @apply bg-white/20 backdrop-blur-lg border border-white/30 shadow-xl;
+  }
+
+  .glass-heavy {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/20 shadow-xl;
+  }
+
+  .glass-nav {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/30 shadow-2xl;
+  }
+
+  /* Agricultural Theme Glassmorphism */
+  .glass-green {
+    @apply bg-primary/10 backdrop-blur-lg border border-primary/20 shadow-lg shadow-primary/5;
+  }
+
+  .glass-green-light {
+    @apply bg-primary/5 backdrop-blur-xl border border-primary/15 shadow-xl shadow-primary/10;
+  }
+
+  /* Interactive Glassmorphism States */
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-white/15 hover:border-white/40 hover:shadow-2xl hover:-translate-y-1;
+  }
+
+  .glass-active {
+    @apply bg-white/25 border-white/50 shadow-inner;
+  }
+
+  /* Glassmorphism with Glow Effects */
+  .glass-glow {
+    @apply bg-card/50 backdrop-blur-xl border border-border/20 shadow-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0
+      rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-glow-green {
+    @apply bg-primary/10 backdrop-blur-xl border border-primary/20;
+    box-shadow: 0 8px 32px rgba(76, 175, 80, 0.15), 0 0 0 1px rgba(76, 175, 80, 0.1), inset 0 1px 0
+      rgba(255, 255, 255, 0.1);
+  }
+
+  /* Frosted Glass Variants */
+  .frosted-light {
+    @apply bg-white/30 backdrop-blur-sm border border-white/40;
+    backdrop-filter: blur(8px) saturate(180%);
+  }
+
+  .frosted-medium {
+    @apply bg-white/20 backdrop-blur-md border border-white/30;
+    backdrop-filter: blur(12px) saturate(180%);
+  }
+
+  .frosted-heavy {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Animated Glassmorphism */
+  .glass-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glass-pulse {
+    animation: glass-pulse 4s ease-in-out infinite;
+  }
+
+  .glass-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  /* Depth and Layering */
+  .glass-depth-1 {
+    background-color: rgba(var(--card), 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--border), 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateZ(10px);
+  }
+
+  .glass-depth-2 {
+    @apply bg-white/20 backdrop-blur-lg border border-white/30 shadow-xl;
+    transform: translateZ(20px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .glass-depth-3 {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+    transform: translateZ(30px);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Glassmorphism Buttons */
+  .btn-glass {
+    background-color: rgba(var(--card), 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--border), 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    @apply transition-all duration-300 hover:bg-white/15 hover:border-white/40 hover:shadow-2xl hover:-translate-y-1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-glass:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-glass:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Glassmorphism Form Elements */
+  .input-glass {
+    @apply bg-input/60 backdrop-blur-lg border border-border/30 focus:border-primary/50 focus:bg-input/80;
+    transition: all 0.3s ease;
+  }
+
+  .input-glass:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  }
+
+  /* Background Patterns for Enhanced Glass Effect */
+  .glass-pattern {
+    background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  }
+
+  .glass-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glass-pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .glass-mobile {
+    @apply bg-card/70 backdrop-blur-lg border border-border/25;
+  }
+
+  .glass-nav {
+    @apply bg-card/90 backdrop-blur-xl;
+  }
+}
+
+.dark {
+  .glass {
+    @apply bg-white/5 border-white/10;
+  }
+
+  .glass-light {
+    @apply bg-white/10 border-white/15;
+  }
+
+  .glass-heavy {
+    @apply bg-white/3 border-white/8;
+  }
+
+  .glass-glow {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0
+      rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-glow-green {
+    box-shadow: 0 8px 32px rgba(76, 175, 80, 0.2), 0 0 0 1px rgba(76, 175, 80, 0.15), inset 0 1px 0
+      rgba(255, 255, 255, 0.05);
+  }
+}

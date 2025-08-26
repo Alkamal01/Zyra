@@ -1,0 +1,38 @@
+[
+  {
+    "farmer_id": "F001",
+    "lga": "Kano Municipal",
+    "state": "Kano",
+    "geo": {"lat": 12.002, "lon": 8.523},
+    "crop": "maize",
+    "category": "pest",
+    "description": "Caterpillars eating young leaves. Fast spread."
+  },
+  {
+    "farmer_id": "F002",
+    "lga": "Iseyin",
+    "state": "Oyo",
+    "geo": {"lat": 7.966, "lon": 3.600},
+    "crop": "cassava",
+    "category": "disease",
+    "description": "Leaf yellowing and mosaic pattern."
+  },
+  {
+    "farmer_id": "F003",
+    "lga": "Makurdi",
+    "state": "Benue",
+    "geo": {"lat": 7.733, "lon": 8.512},
+    "crop": "rice",
+    "category": "flood",
+    "description": "Fields waterlogged after heavy rain."
+  },
+  {
+    "farmer_id": "F004",
+    "lga": "Gusau",
+    "state": "Zamfara",
+    "geo": {"lat": 12.162, "lon": 6.661},
+    "crop": "tomato",
+    "category": "input_need",
+    "description": "Need improved seedlings and basic training."
+  }
+]

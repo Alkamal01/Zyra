@@ -1,0 +1,42 @@
+type Geo = record { lat: float64; lon: float64 };
+type Recommendation = record { step: text; source: text; created_at: text };
+type Audit = record { event: text; at: text };
+
+type Enriched = record {
+  weather_hint: text;
+  severity_score: nat16;
+  tags: vec text;
+};
+
+type ResourceRequest = record {
+  requested: bool;
+  type_: text;
+  notes: text;
+  created_at: opt text;
+};
+
+type Incident = record {
+  incident_id: text;
+  farmer_id: text;
+  lga: text;
+  state: text;
+  geo: Geo;
+  crop: text;
+  category: text;
+  description: text;
+  reported_at: text;
+  enriched: Enriched;
+  status: text;
+  recommendations: vec Recommendation;
+  resource_request: ResourceRequest;
+  audit: vec Audit;
+};
+
+service : {
+  create_incident: (Incident) -> (text) query;         // returns incident_id
+  get_incident: (text) -> (opt Incident) query;
+  list_incidents_by_lga: (text) -> (vec Incident) query;
+  add_recommendation: (text, Recommendation) -> ();
+  set_status: (text, text) -> ();
+  raise_resource_request: (text, text, text) -> ();    // incident_id, type, notes
+}

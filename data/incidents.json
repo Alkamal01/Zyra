@@ -1,0 +1,402 @@
+[
+  {
+    "incident_id": "inc-20250826161054",
+    "farmer_id": "F001",
+    "lga": "Kano Municipal",
+    "state": "Kano",
+    "geo": {
+      "lat": 12.002,
+      "lon": 8.523
+    },
+    "crop": "maize",
+    "category": "pest",
+    "description": "Caterpillars eating young leaves. Fast spread.",
+    "reported_at": "2025-08-26T15:10:54.012235Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 80,
+      "tags": [
+        "fall_armyworm",
+        "maize_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "URGENT: Scout daily, apply recommended Bt pesticide per label, remove heavily infested plants (High severity incident - immediate action required)",
+        "source": "local_knowledge",
+        "created_at": "2025-08-26T15:10:54.012106Z"
+      }
+    ],
+    "resource_request": {
+      "requested": true,
+      "type": "agrochemical",
+      "notes": "High severity pest incident",
+      "created_at": "2025-08-26T15:10:54.012235Z"
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T15:10:54.012235Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T15:10:54.012235Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T15:10:54.012235Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826161054",
+    "farmer_id": "F002",
+    "lga": "Iseyin",
+    "state": "Oyo",
+    "geo": {
+      "lat": 7.966,
+      "lon": 3.6
+    },
+    "crop": "cassava",
+    "category": "disease",
+    "description": "Leaf yellowing and mosaic pattern.",
+    "reported_at": "2025-08-26T15:10:54.012537Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 60,
+      "tags": [
+        "cassava_mosaic",
+        "cassava_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Use disease-free cuttings, remove infected leaves, consider tolerant varieties",
+        "source": "ifpri_stub",
+        "created_at": "2025-08-26T15:10:54.012529Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T15:10:54.012537Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T15:10:54.012537Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T15:10:54.012537Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826161054",
+    "farmer_id": "F003",
+    "lga": "Makurdi",
+    "state": "Benue",
+    "geo": {
+      "lat": 7.733,
+      "lon": 8.512
+    },
+    "crop": "rice",
+    "category": "flood",
+    "description": "Fields waterlogged after heavy rain.",
+    "reported_at": "2025-08-26T15:10:54.012775Z",
+    "enriched": {
+      "weather_hint": "rainy",
+      "severity_score": 90,
+      "tags": [
+        "flood_risk",
+        "rice_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "URGENT: Open drainage channels, delay new planting for 72 hours, avoid nitrogen top-dressing (High severity incident - immediate action required)",
+        "source": "extension_manual_stub",
+        "created_at": "2025-08-26T15:10:54.012769Z"
+      }
+    ],
+    "resource_request": {
+      "requested": true,
+      "type": "irrigation",
+      "notes": "High severity flood incident",
+      "created_at": "2025-08-26T15:10:54.012775Z"
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T15:10:54.012775Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T15:10:54.012775Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T15:10:54.012775Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826161054",
+    "farmer_id": "F004",
+    "lga": "Gusau",
+    "state": "Zamfara",
+    "geo": {
+      "lat": 12.162,
+      "lon": 6.661
+    },
+    "crop": "tomato",
+    "category": "input_need",
+    "description": "Need improved seedlings and basic training.",
+    "reported_at": "2025-08-26T15:10:54.013004Z",
+    "enriched": {
+      "weather_hint": "rainy",
+      "severity_score": 45,
+      "tags": [
+        "input_request",
+        "tomato_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Register for input support, recommended seed variety list attached",
+        "source": "extension_manual_stub",
+        "created_at": "2025-08-26T15:10:54.013000Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T15:10:54.013004Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T15:10:54.013004Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T15:10:54.013004Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826162043",
+    "farmer_id": "F005",
+    "lga": "Abuja Municipal",
+    "state": "FCT",
+    "geo": {
+      "lat": 9.082,
+      "lon": 7.398
+    },
+    "crop": "maize",
+    "category": "pest",
+    "description": "Armyworm infestation in maize field",
+    "reported_at": "2025-08-26T15:20:43.403990Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 60,
+      "tags": [
+        "fall_armyworm",
+        "maize_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Scout daily, apply recommended Bt pesticide per label, remove heavily infested plants",
+        "source": "local_knowledge",
+        "created_at": "2025-08-26T15:20:43.403562Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T15:20:43.403990Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T15:20:43.403990Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T15:20:43.403990Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826162746",
+    "farmer_id": "F006",
+    "lga": "Lagos Island",
+    "state": "Lagos",
+    "geo": {
+      "lat": 6.524,
+      "lon": 3.379
+    },
+    "crop": "tomato",
+    "category": "disease",
+    "description": "Early blight affecting tomato plants",
+    "reported_at": "2025-08-26T16:27:46.809Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 50,
+      "tags": [
+        "disease_alert",
+        "tomato_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Apply fungicide, remove affected leaves, improve air circulation",
+        "source": "extension_manual_stub",
+        "created_at": "2025-08-26T16:27:46.809Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T16:27:46.809Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T16:27:46.809Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T16:27:46.809Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826192146",
+    "farmer_id": "FARMER_007",
+    "lga": "Test LGA",
+    "state": "Test State",
+    "geo": {
+      "lat": 9.082,
+      "lon": 8.6753
+    },
+    "crop": "maize",
+    "category": "pest",
+    "description": "Test pest infestation in maize field",
+    "reported_at": "2025-08-26T19:21:46.379Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 60,
+      "tags": [
+        "fall_armyworm",
+        "maize_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Scout daily, apply recommended Bt pesticide per label, remove heavily infested plants",
+        "source": "extension_manual_stub",
+        "created_at": "2025-08-26T19:21:46.379Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T19:21:46.379Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T19:21:46.379Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T19:21:46.379Z"
+      }
+    ]
+  },
+  {
+    "incident_id": "inc-20250826214839",
+    "farmer_id": "TEST001",
+    "lga": "Kano Municipal",
+    "state": "Kano",
+    "geo": {
+      "lat": 11.9914,
+      "lon": 8.5317
+    },
+    "crop": "maize",
+    "category": "pest",
+    "description": "Fall armyworm infestation detected in maize field",
+    "reported_at": "2025-08-26T21:48:39.076Z",
+    "enriched": {
+      "weather_hint": "unknown",
+      "severity_score": 60,
+      "tags": [
+        "fall_armyworm",
+        "maize_crop"
+      ]
+    },
+    "status": "recommended",
+    "recommendations": [
+      {
+        "step": "Scout daily, apply recommended Bt pesticide per label, remove heavily infested plants",
+        "source": "extension_manual_stub",
+        "created_at": "2025-08-26T21:48:39.076Z"
+      }
+    ],
+    "resource_request": {
+      "requested": false,
+      "type": "none",
+      "notes": "",
+      "created_at": null
+    },
+    "audit": [
+      {
+        "event": "created",
+        "at": "2025-08-26T21:48:39.076Z"
+      },
+      {
+        "event": "enriched",
+        "at": "2025-08-26T21:48:39.076Z"
+      },
+      {
+        "event": "recommendation_added",
+        "at": "2025-08-26T21:48:39.076Z"
+      }
+    ]
+  }
+]

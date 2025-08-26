@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "agriassist": {
+      "type": "custom",
+      "build": [
+        "cargo build --target wasm32-unknown-unknown --package agriassist --release"
+      ],
+      "candid": "src/candid.did",
+      "wasm": "target/wasm32-unknown-unknown/release/agriassist.wasm"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "dfx": "0.29.0",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

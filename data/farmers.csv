@@ -1,0 +1,5 @@
+farmer_id,name,phone,lga,state,lat,lon,primary_crop
+F001,Amina Yusuf,+234800000001,Kano Municipal,Kano,12.002,8.523,maize
+F002,John Ade,+234800000002,Iseyin,Oyo,7.966,3.600,cassava
+F003,Peter Ochai,+234800000003,Makurdi,Benue,7.733,8.512,rice
+F004,Halima Bello,+234800000004,Gusau,Zamfara,12.162,6.661,tomato
