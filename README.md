@@ -517,10 +517,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Project Lead**: [amal Aliyu]
+- **Project Lead**: [Kamal Aliyu]
 - **Email**: [amalaliyu212@gmail.com]
-- **GitHub**:[lkamal01]
-- **Twitter**: [kaftandev]
+- **GitHub**: [Alkamal01]
+- **Twitter**: [@kaftandev]
 
 ---
 
