@@ -1,8 +1,14 @@
 # 🌱 Zyra - Autonomous Agricultural Extension Agent
 
 ![tag:innovationlab](https://img.shields.io/badge/innovationlab-3D8BD3)
+![Fetch.ai](https://img.shields.io/badge/Fetch.ai-uAgent%20Framework-blue)
+![ICP](https://img.shields.io/badge/Internet%20Computer-ICP%20Blockchain-green)
+![ASI:One](https://img.shields.io/badge/ASI:One-Natural%20Language%20AI-orange)
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Rust](https://img.shields.io/badge/Rust-Canister%20Development-orange)
 
-> **Autonomous AI agents using Fetch.ai's uAgent framework, connected directly to Internet Computer (ICP) for fully on-chain agricultural extension services in Nigeria.**
+> **Autonomous AI agents using Fetch.ai's uAgent framework with ASI:One natural language processing, connected directly to Internet Computer (ICP) for fully on-chain agricultural extension services in Nigeria.**
 
 ## 🚀 Project Overview
 
@@ -11,11 +17,13 @@ Zyra is an innovative autonomous agricultural extension and coordination agent d
 ### 🌟 Key Features
 
 - **🤖 Autonomous AI Agents**: Intelligent incident processing and recommendation generation
+- **🗣️ Natural Language Processing**: ASI:One integration for human-like conversations
 - **🔗 Blockchain Storage**: Immutable incident records on ICP canister
 - **🌍 Geographic Intelligence**: LGA-based querying and resource allocation
 - **📱 Modern Web Interface**: Next.js frontend with real-time dashboard
 - **🔒 Audit Trail**: Complete immutable history of all operations
 - **⚡ Real-time Processing**: Instant incident enrichment and response
+- **💬 Chat Protocol**: Seamless integration with Agentverse and natural conversations
 
 ## 🏗️ Architecture
 
@@ -36,35 +44,55 @@ Zyra is an innovative autonomous agricultural extension and coordination agent d
 ### Agent Details
 
 - **Agent Name**: `Zyra Agricultural Extension Agent`
-- **Agent Address**: `agent1q2w3e4r5t6y7u8i9o0p` (will be assigned on Agentverse deployment)
+- **Agent Address**: `agent1q0dglz2vh4v0nh7latyrkthdd5hrrc87hk9r3nj00ayc7fpmquz255c5vs4`
 - **Agent Category**: Innovation Lab
-- **Agent Type**: Autonomous Agricultural Extension
+- **Agent Type**: Autonomous Agricultural Extension with Natural Language Processing
+- **Agentverse URL**: https://agentverse.ai/inspect/?uri=http%3A//127.0.0.1%3A8001&address=agent1q0dglz2vh4v0nh7latyrkthdd5hrrc87hk9r3nj00ayc7fpmquz255c5vs4
 
 ### Agent Capabilities
 
 Our uAgents autonomously handle:
 
-1. **Farmer Report Processing**
+1. **Natural Language Processing** 🌟 **NEW**
+   - ASI:One integration for natural language understanding
+   - Function calling with intelligent tool selection
+   - Multi-turn conversations with context awareness
+   - Human-friendly responses and error handling
+
+2. **Farmer Report Processing**
    - Incident validation and enrichment
    - Severity assessment and tagging
    - Automatic recommendation generation
    - Resource request triggering for high-severity cases
 
-2. **Operator Query Handling**
+3. **Operator Query Handling**
    - LGA-based incident retrieval
    - Geographic analysis and reporting
    - Status tracking and updates
    - Audit trail maintenance
 
-3. **Autonomous Decision Making**
+4. **Autonomous Decision Making**
    - Weather-based recommendations
    - Crop-specific action plans
    - Priority-based resource allocation
    - Real-time status updates
 
+5. **Chat Protocol Integration** 🌟 **NEW**
+   - Session management and persistence
+   - Message acknowledgments
+   - Welcome messages and onboarding
+   - Agentverse compatibility
+
 ### Agent Protocols
 
 ```python
+# Chat Protocol (Enhanced) 🌟 NEW
+@chat_proto.on_message(model=ChatMessage)
+async def handle_chat_message(ctx: Context, sender: str, msg: ChatMessage):
+    # Natural language processing via ASI:One
+    # Function calling with tool selection
+    # Multi-turn conversation handling
+
 # Farmer Report Protocol
 @agent.on_message(model=FarmerReport, replies=AgentResponse)
 async def farmer_report_handler(ctx: Context, msg: FarmerReport):
@@ -76,6 +104,26 @@ async def operator_query_handler(ctx: Context, msg: OperatorQuery):
     # Autonomous querying: retrieve → analyze → format → respond
 ```
 
+### ASI:One Function Calling
+
+The agent supports natural language queries that map to specific functions:
+
+- **`report_agricultural_incident`**: Report incidents with natural language
+- **`query_incidents_by_lga`**: Query incidents by location
+- **`get_incident_details`**: Get detailed incident information
+- **`add_recommendation_to_incident`**: Add recommendations to incidents
+- **`update_incident_status`**: Update incident status
+
+### Example Natural Language Queries
+
+```
+"I need to report a pest infestation in my maize farm in Kano Municipal"
+"Show me all incidents in Lagos Island"
+"What's the status of agricultural problems in Kano?"
+"Give me details about incident inc-20241201120000"
+"Add a recommendation to incident ABC123"
+```
+
 ## 🔗 Internet Computer (ICP) Integration
 
 ### Canister Details
@@ -84,6 +132,7 @@ async def operator_query_handler(ctx: Context, msg: OperatorQuery):
 - **Network**: Local (ready for mainnet deployment)
 - **Language**: Rust
 - **Interface**: Candid
+- **Status**: ✅ Deployed and operational
 
 ### On-chain Operations
 
@@ -114,9 +163,10 @@ raise_resource_request(incident_id: String, request_type: String, notes: String)
 
 ### Backend
 - **Framework**: FastAPI
-- **Agents**: Fetch.ai uAgent framework
+- **Agents**: Fetch.ai uAgent framework with ASI:One integration
 - **Database**: ICP canister (blockchain storage)
 - **Language**: Python 3.11
+- **Natural Language**: ASI:One API for function calling
 
 ### Blockchain
 - **Platform**: Internet Computer (ICP)
@@ -125,6 +175,47 @@ raise_resource_request(incident_id: String, request_type: String, notes: String)
 - **Storage**: On-chain immutable records
 
 ## 🚀 Quick Start
+
+### Enhanced Agent Setup (Recommended) 🌟 NEW
+
+For the full natural language experience:
+
+1. **Get ASI:One API Key**
+   ```bash
+   # Visit https://asi1.ai/ and get your API key
+   export ASI1_API_KEY="your_api_key_here"
+   ```
+
+2. **Start Enhanced Agent**
+   ```bash
+   cd agent
+   python enhanced_agent.py
+   ```
+
+3. **Connect to Agentverse**
+   - Visit: https://agentverse.ai/inspect/
+   - Connect your agent using the provided URL
+   - Test natural language queries
+
+4. **Example Queries**
+   ```bash
+   "I need to report a pest infestation in my maize farm in Kano Municipal"
+   "Show me all incidents in Lagos Island"
+   "What's the status of agricultural problems in Kano?"
+   ```
+
+### Enhanced Agent Features 🌟
+
+The enhanced agent includes:
+
+- **🗣️ Natural Language Processing**: Understands human-like queries
+- **🔧 Function Calling**: Automatically routes requests to appropriate functions
+- **💬 Chat Protocol**: Seamless integration with Agentverse
+- **🔄 Multi-turn Conversations**: Maintains context across sessions
+- **🎯 Intent Recognition**: Understands user intent from natural language
+- **📝 Smart Responses**: Generates human-friendly, actionable responses
+
+### Standard Agent Setup
 
 ### Prerequisites
 
@@ -430,6 +521,14 @@ Our agents are ready for deployment on Fetch.ai's Agentverse:
 
 #### 1. **Autonomous Agent Protocols**
 ```python
+# Enhanced Chat Protocol with ASI:One
+@chat_proto.on_message(model=ChatMessage)
+async def handle_chat_message(ctx: Context, sender: str, msg: ChatMessage):
+    # Natural language processing via ASI:One
+    # Function calling with tool selection
+    # Multi-turn conversation handling
+
+# Traditional Protocol
 @agent.on_message(model=FarmerReport, replies=AgentResponse)
 async def farmer_report_handler(ctx: Context, msg: FarmerReport):
     # Autonomous processing pipeline
@@ -442,22 +541,48 @@ async def farmer_report_handler(ctx: Context, msg: FarmerReport):
 ```
 
 #### 2. **Message Schemas**
+- **ChatMessage**: Natural language conversation messages
+- **ChatAcknowledgement**: Message delivery confirmations
 - **FarmerReport**: Structured incident reports from farmers
 - **OperatorQuery**: Geographic and status-based queries
 - **AgentResponse**: Standardized response format
 - **EnrichmentResult**: Weather and severity analysis
 
 #### 3. **Autonomous Decision Making**
+- **Natural Language Understanding**: ASI:One-powered intent recognition
+- **Function Calling**: Intelligent tool selection and execution
 - **Intelligent Enrichment**: Weather data integration and severity assessment
 - **Recommendation Engine**: Crop-specific action plan generation
 - **Resource Allocation**: Automatic triggering of resource requests
 - **Status Management**: Real-time status updates and tracking
 
 #### 4. **Agent Communication**
+- **Chat Protocol**: Natural language conversation flow
 - **Protocol-based**: Type-safe message passing
 - **Asynchronous**: Non-blocking operation handling
 - **Context-aware**: Rich context for decision making
 - **Error Handling**: Robust error recovery mechanisms
+- **Agentverse Integration**: Seamless marketplace connectivity
+
+### ASI:One Integration Features 🌟
+
+#### 1. **Natural Language Processing**
+- **Intent Recognition**: Understands user intent from natural language
+- **Function Calling**: Automatically maps queries to appropriate functions
+- **Parameter Extraction**: Extracts structured data from natural language
+- **Context Awareness**: Maintains conversation context across turns
+
+#### 2. **Function Calling Capabilities**
+- **Tool Selection**: Intelligent selection of appropriate functions
+- **Parameter Validation**: Ensures correct parameter types and values
+- **Error Handling**: Graceful handling of malformed requests
+- **Response Generation**: Human-friendly response formatting
+
+#### 3. **Conversation Management**
+- **Multi-turn Dialogues**: Maintains context across conversation sessions
+- **Session Persistence**: Remembers conversation history
+- **Welcome Messages**: Friendly onboarding experience
+- **Error Recovery**: Handles misunderstandings gracefully
 
 ### uAgent Capabilities Demonstrated
 
