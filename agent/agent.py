@@ -23,7 +23,7 @@ from utils import (
 from icp_client import icp_client
 
 # ASI:One API settings
-ASI1_API_KEY=os.getenv("ASI1_API_KEY", "sk_26af83329adf4e6cb511c27ce7ee1f77f219d84c76ec442f8139009a88fc3589")  # Set your ASI1 key
+ASI1_API_KEY=os.getenv("ASI1_API_KEY", "")  # Set your ASI1 key
 ASI1_BASE_URL = "https://api.asi1.ai/v1"
 ASI1_HEADERS = {
     "Authorization": f"Bearer {ASI1_API_KEY}",
