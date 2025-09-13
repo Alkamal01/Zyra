@@ -32,9 +32,9 @@ export default function LandingPage() {
       {/* Enhanced Glassmorphic Navbar */}
       <Navigation />
 
-      {/* Hero Section - Cleaned up without features */}
+      {/* Hero Section - Enhanced for mobile */}
       <section className="pt-16 md:pt-12 pb-16 px-4 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left side - Title and description */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -94,7 +94,7 @@ export default function LandingPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
               { 
                 icon: Brain, 

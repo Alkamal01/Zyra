@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Home, FileText, BarChart3, Menu, X, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { NotificationCenter } from "./notification-center"
 
 const navigationItems = [
   { name: "Home", href: "/", icon: Home },
@@ -58,6 +59,9 @@ export function Navigation() {
                   </Link>
                 )
               })}
+              
+              {/* Notification Center */}
+              <NotificationCenter />
             </div>
           </div>
         </div>

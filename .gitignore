@@ -493,6 +493,9 @@ coverage/
 # Zyra Specific
 # =============================================================================
 
+# Setup documentation
+GROQ_SETUP.md
+
 # ICP canister builds
 icp/target/
 icp/.dfx/

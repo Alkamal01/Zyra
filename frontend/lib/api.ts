@@ -75,6 +75,63 @@ export interface SubmitReportResponse {
   resource_requested: boolean;
 }
 
+export interface AIAnalysisRequest {
+  category: string;
+  crop: string;
+  description: string;
+  lat: number;
+  lon: number;
+}
+
+export interface AIAnalysisResponse {
+  success: boolean;
+  analysis: {
+    severity_score: number;
+    weather_hint: string;
+    tags: string[];
+    risk_factors: string[];
+    urgency_level: string;
+    affected_area_estimate: string;
+    potential_spread: string;
+  };
+  timestamp: string;
+}
+
+export interface NaturalLanguageQueryRequest {
+  query: string;
+}
+
+export interface NaturalLanguageQueryResponse {
+  success: boolean;
+  response: {
+    query_type: string;
+    parameters: Record<string, any>;
+    response: string;
+    action_required: string;
+  };
+  timestamp: string;
+}
+
+export interface AIRecommendationRequest {
+  category: string;
+  crop: string;
+  severity: number;
+  analysis: Record<string, any>;
+}
+
+export interface AIRecommendationResponse {
+  success: boolean;
+  recommendations: {
+    immediate_actions: string[];
+    preventive_measures: string[];
+    monitoring_steps: string[];
+    resource_needs: string[];
+    timeline: string;
+    follow_up_required: boolean;
+  };
+  timestamp: string;
+}
+
 // API functions
 export async function submitFarmerReport(data: FarmerReportRequest): Promise<SubmitReportResponse> {
   try {
@@ -175,4 +232,68 @@ export function getStatusColor(status: string): string {
     'pending': 'bg-gray-500/20 text-gray-700 border-gray-500/30'
   };
   return colors[status] || 'bg-gray-500/20 text-gray-700 border-gray-500/30';
+}
+
+// Groq AI API functions
+export async function analyzeIncidentWithAI(data: AIAnalysisRequest): Promise<AIAnalysisResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/api/ai/analyze`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error analyzing incident with AI:', error);
+    throw error;
+  }
+}
+
+export async function processNaturalLanguageQuery(data: NaturalLanguageQueryRequest): Promise<NaturalLanguageQueryResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/api/ai/query`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error processing natural language query:', error);
+    throw error;
+  }
+}
+
+export async function getAIRecommendations(data: AIRecommendationRequest): Promise<AIRecommendationResponse> {
+  try {
+    const response = await fetch(`${API_BASE}/api/ai/recommend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error getting AI recommendations:', error);
+    throw error;
+  }
 }

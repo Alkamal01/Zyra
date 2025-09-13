@@ -5,6 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navigation, PageHeader } from "@/components/navigation"
+import { AIChat } from "@/components/ai-chat"
+import { 
+  WeatherWidget, 
+  PerformanceMetrics, 
+  IncidentTrendChart, 
+  CategoryDistributionChart, 
+  QuickActions 
+} from "@/components/analytics-widgets"
 import { TrendingUp, AlertTriangle, CheckCircle, Clock, BarChart3, Droplets, Bug, Sprout, MapPin, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -148,6 +156,11 @@ export default function AnalyticsDashboard() {
       />
 
       <div className="max-w-7xl mx-auto px-4 pb-8">
+        {/* AI Chat Section */}
+        <div className="mb-8">
+          <AIChat />
+        </div>
+
         {/* Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
           <div className="flex justify-center">
@@ -169,6 +182,16 @@ export default function AnalyticsDashboard() {
 
           {/* Farmer Dashboard */}
           <TabsContent value="farmer" className="space-y-8">
+            {/* Quick Actions and Weather */}
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <QuickActions />
+              </div>
+              <div>
+                <WeatherWidget />
+              </div>
+            </div>
+
             {/* Stats Overview */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -372,7 +395,7 @@ export default function AnalyticsDashboard() {
                         outerRadius={100}
                         fill="#8884d8"
                         dataKey="value"
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                       >
                         {getCategoryChartData().map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
@@ -423,6 +446,12 @@ export default function AnalyticsDashboard() {
 
           {/* Admin Dashboard */}
           <TabsContent value="admin" className="space-y-8">
+            {/* Performance Metrics and Weather */}
+            <div className="grid lg:grid-cols-2 gap-6">
+              <PerformanceMetrics />
+              <WeatherWidget />
+            </div>
+
             {/* Admin Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -468,6 +497,12 @@ export default function AnalyticsDashboard() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Enhanced Charts */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              <IncidentTrendChart />
+              <CategoryDistributionChart />
             </div>
 
             {/* Trend Analysis */}

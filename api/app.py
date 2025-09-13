@@ -14,6 +14,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'agent'))
 
 from models import FarmerReport, OperatorQuery, AgentResponse, Geo, CropType, CategoryType, Incident
 from utils import enrich_incident, generate_recommendation, should_raise_resource_request, get_resource_request_type
+from ai_service import ai_service
 
 app = FastAPI(
     title="Zyra Agricultural Extension API",
@@ -46,6 +47,16 @@ class FarmerReportRequest(BaseModel):
 
 class OperatorQueryRequest(BaseModel):
     lga: str
+
+class NaturalLanguageQueryRequest(BaseModel):
+    query: str
+
+class AIAnalysisRequest(BaseModel):
+    category: str
+    crop: str
+    description: str
+    lat: float
+    lon: float
 
 class IncidentResponse(BaseModel):
     incident_id: str
@@ -98,6 +109,53 @@ async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'}
 
+@app.post("/api/ai/analyze")
+async def analyze_incident_with_ai(request: AIAnalysisRequest):
+    """
+    Analyze agricultural incident using Groq AI.
+    """
+    try:
+        analysis = await ai_service.analyze_incident(
+            request.category, request.crop, request.description, request.lat, request.lon
+        )
+        return {
+            "success": True,
+            "analysis": analysis,
+            "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI analysis failed: {str(e)}")
+
+@app.post("/api/ai/query")
+async def process_natural_language_query(request: NaturalLanguageQueryRequest):
+    """
+    Process natural language queries using Groq AI.
+    """
+    try:
+        response = await ai_service.process_natural_language_query(request.query)
+        return {
+            "success": True,
+            "response": response,
+            "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
+
+@app.post("/api/ai/recommend")
+async def get_ai_recommendations(category: str, crop: str, severity: int, analysis: Dict[str, Any]):
+    """
+    Get AI-powered recommendations for agricultural issues.
+    """
+    try:
+        recommendations = await ai_service.generate_recommendation(category, crop, severity, analysis)
+        return {
+            "success": True,
+            "recommendations": recommendations,
+            "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Recommendation generation failed: {str(e)}")
+
 @app.post("/api/submit-report", response_model=Dict[str, Any])
 async def submit_farmer_report(request: FarmerReportRequest):
     """
@@ -122,16 +180,38 @@ async def submit_farmer_report(request: FarmerReportRequest):
             description=request.description
         )
         
-        # For demo purposes, we'll simulate the agent processing
-        # In production, this would send to the uAgent
-        
-        # Enrich the incident
-        enrichment = enrich_incident(
-            category, crop, request.lat, request.lon, request.description
-        )
-        
-        # Generate recommendation
-        recommendation = generate_recommendation(category, crop, enrichment.severity_score)
+        # Use Groq AI for incident analysis
+        try:
+            # Get AI analysis
+            ai_analysis = await ai_service.analyze_incident(
+                category.value, crop.value, request.description, request.lat, request.lon
+            )
+            
+            # Generate AI recommendations
+            ai_recommendation = await ai_service.generate_recommendation(
+                category.value, crop.value, ai_analysis.get("severity_score", 50), ai_analysis
+            )
+            
+            # Use AI analysis results
+            enrichment = type('Enrichment', (), {
+                'weather_hint': type('WeatherHint', (), {'value': ai_analysis.get('weather_hint', 'Unknown')})(),
+                'severity_score': ai_analysis.get('severity_score', 50),
+                'tags': ai_analysis.get('tags', [])
+            })()
+            
+            recommendation = type('Recommendation', (), {
+                'step': ai_recommendation.get('immediate_actions', ['Contact extension officer'])[0],
+                'source': 'Groq AI Analysis',
+                'created_at': now
+            })()
+            
+        except Exception as e:
+            print(f"AI analysis failed, using fallback: {e}")
+            # Fallback to original logic
+            enrichment = enrich_incident(
+                category, crop, request.lat, request.lon, request.description
+            )
+            recommendation = generate_recommendation(category, crop, enrichment.severity_score)
         
         # Create incident data
         now = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
