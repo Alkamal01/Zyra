@@ -1,37 +1,36 @@
 # 🌱 Zyra - Autonomous Agricultural Extension Agent
 
 ![tag:innovationlab](https://img.shields.io/badge/innovationlab-3D8BD3)
-![Groq AI](https://img.shields.io/badge/Groq%20AI-LPU%20Powered-purple)
+![Fetch.ai](https://img.shields.io/badge/Fetch.ai-uAgent%20Framework-blue)
 ![ICP](https://img.shields.io/badge/Internet%20Computer-ICP%20Blockchain-green)
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![ASI:One](https://img.shields.io/badge/ASI:One-Natural%20Language%20AI-orange)
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Rust](https://img.shields.io/badge/Rust-Canister%20Development-orange)
-![FastAPI](https://img.shields.io/badge/FastAPI-API%20Backend-green)
 
-> **High-performance agricultural extension platform powered by Groq AI's LPUs for ultra-fast incident analysis and recommendations, connected to Internet Computer (ICP) for fully on-chain agricultural services in Nigeria.**
+> **Autonomous AI agents using Fetch.ai's uAgent framework with ASI:One natural language processing, connected directly to Internet Computer (ICP) for fully on-chain agricultural extension services in Nigeria.**
 
 ## 🚀 Project Overview
 
-Zyra is an innovative high-performance agricultural extension platform designed specifically for Nigeria's agricultural sector. The system leverages **Groq AI's LPUs** for ultra-fast processing and **Internet Computer (ICP) blockchain** to provide end-to-end agricultural support services with real-time AI analysis.
+Zyra is an innovative autonomous agricultural extension and coordination agent designed specifically for Nigeria's agricultural sector. The system leverages **Fetch.ai's uAgent framework** and **Internet Computer (ICP) blockchain** to provide end-to-end autonomous agricultural support services.
 
 ### 🌟 Key Features
 
-- **⚡ Ultra-Fast AI Processing**: Groq LPUs provide 10-100x faster analysis than traditional GPUs
-- **🤖 Real-time AI Analysis**: Instant incident analysis with detailed recommendations
-- **💬 Natural Language Chat**: Interactive AI assistant for agricultural queries
+- **🤖 Autonomous AI Agents**: Intelligent incident processing and recommendation generation
+- **🗣️ Natural Language Processing**: ASI:One integration for human-like conversations
 - **🔗 Blockchain Storage**: Immutable incident records on ICP canister
 - **🌍 Geographic Intelligence**: LGA-based querying and resource allocation
 - **📱 Modern Web Interface**: Next.js frontend with real-time dashboard
 - **🔒 Audit Trail**: Complete immutable history of all operations
-- **📊 Enhanced Analytics**: Rich data visualization and insights
-- **🎯 Smart Recommendations**: AI-powered action plans and preventive measures
+- **⚡ Real-time Processing**: Instant incident enrichment and response
+- **💬 Chat Protocol**: Seamless integration with Agentverse and natural conversations
 
 ## 🏗️ Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Next.js UI    │    │  Groq AI        │    │  ICP Canister   │
-│   (Frontend)    │◄──►│  (LPUs)         │◄──►│  (Blockchain)   │
+│   Next.js UI    │    │  Fetch.ai       │    │  ICP Canister   │
+│   (Frontend)    │◄──►│  uAgents        │◄──►│  (Blockchain)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          │              ┌─────────────────┐              │
@@ -40,25 +39,7 @@ Zyra is an innovative high-performance agricultural extension platform designed 
                         └─────────────────┘
 ```
 
-## ⚡ Groq AI Integration
-
-### Performance Benefits
-
-- **10-100x Faster Processing**: Groq's LPUs deliver ultra-fast AI inference
-- **Low Latency**: Sub-second response times for real-time analysis
-- **Cost Efficient**: Pay-per-use model with generous free tier
-- **Scalable**: Automatically scales with usage demands
-
-### AI Capabilities
-
-- **Incident Analysis**: Real-time severity assessment and risk evaluation
-- **Smart Recommendations**: Detailed action plans and preventive measures
-- **Natural Language Processing**: Interactive chat for user queries
-- **Context Awareness**: Understands Nigerian agricultural context
-
-## 🤖 Legacy Fetch.ai Integration
-
-> **Note**: The system has been migrated from Fetch.ai uAgents to Groq AI for better performance and reliability. The original Fetch.ai integration is preserved for reference.
+## 🤖 Fetch.ai Agents
 
 ### Agent Details
 
@@ -195,57 +176,32 @@ raise_resource_request(incident_id: String, request_type: String, notes: String)
 
 ## 🚀 Quick Start
 
-### Groq AI Setup (Recommended) ⚡ NEW
+### Enhanced Agent Setup (Recommended) 🌟 NEW
 
-For the fastest and most efficient experience:
+For the full natural language experience:
 
-1. **Get Groq API Key**
+1. **Get ASI:One API Key**
    ```bash
-   # Visit https://console.groq.com and get your API key
-   # Create a .env file in the api/ directory
-   echo "GROQ_API_KEY=your_groq_api_key_here" > api/.env
+   # Visit https://asi1.ai/ and get your API key
+   export ASI1_API_KEY="your_api_key_here"
    ```
 
-2. **Run the Demo**
+2. **Start Enhanced Agent**
    ```bash
-   # Make the startup script executable
-   chmod +x start_groq_demo.sh
-   
-   # Run the complete demo
-   ./start_groq_demo.sh
+   cd agent
+   python enhanced_agent.py
    ```
 
-3. **Access the Platform**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:8000
-   - API Docs: http://localhost:8000/docs
+3. **Connect to Agentverse**
+   - Visit: https://agentverse.ai/inspect/
+   - Connect your agent using the provided URL
+   - Test natural language queries
 
-4. **Test AI Features**
-   - Try the AI Chat on the dashboard
-   - Submit a report with real-time AI analysis
-   - Explore the enhanced analytics
-
-### Manual Setup
-
-If you prefer manual setup:
-
-1. **Backend Setup**
+4. **Example Queries**
    ```bash
-   cd api
-   pip install -r requirements.txt
-   python app.py
-   ```
-
-2. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-
-3. **Test Integration**
-   ```bash
-   python test_groq_integration.py
+   "I need to report a pest infestation in my maize farm in Kano Municipal"
+   "Show me all incidents in Lagos Island"
+   "What's the status of agricultural problems in Kano?"
    ```
 
 ### Enhanced Agent Features 🌟
