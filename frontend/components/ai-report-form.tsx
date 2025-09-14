@@ -33,6 +33,7 @@ import {
   AIAnalysisResponse,
   AIRecommendationResponse
 } from "@/lib/api"
+import { LocationSelector } from "@/components/location-selector"
 import { toast } from "sonner"
 
 interface AIAnalysis {
@@ -54,8 +55,18 @@ interface AIRecommendations {
   follow_up_required: boolean
 }
 
+interface LocationData {
+  name: string
+  lat: number
+  lon: number
+  state?: string
+  lga?: string
+  country?: string
+}
+
 export function AIReportForm() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null)
   const [formData, setFormData] = useState<FarmerReportRequest>({
     farmer_id: "",
     lga: "",
@@ -84,6 +95,17 @@ export function AIReportForm() {
     setFormData(prev => ({
       ...prev,
       [field]: value
+    }))
+  }
+
+  const handleLocationSelect = (location: LocationData) => {
+    setSelectedLocation(location)
+    setFormData(prev => ({
+      ...prev,
+      lat: location.lat,
+      lon: location.lon,
+      state: location.state || "",
+      lga: location.lga || ""
     }))
   }
 
@@ -176,10 +198,7 @@ export function AIReportForm() {
 
   const isFormValid = () => {
     return formData.farmer_id && 
-           formData.lga && 
-           formData.state && 
-           formData.lat && 
-           formData.lon && 
+           selectedLocation && 
            formData.crop && 
            formData.category && 
            formData.description
@@ -432,69 +451,12 @@ export function AIReportForm() {
               />
             </div>
 
-            {/* Location Fields */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="lga" className="text-card-foreground font-medium">
-                  Local Government Area (LGA)
-                </Label>
-                <Input
-                  id="lga"
-                  value={formData.lga}
-                  onChange={(e) => handleInputChange('lga', e.target.value)}
-                  placeholder="e.g., Kano Municipal"
-                  className="bg-input/80 backdrop-blur-sm border-border/30"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="state" className="text-card-foreground font-medium">
-                  State
-                </Label>
-                <Input
-                  id="state"
-                  value={formData.state}
-                  onChange={(e) => handleInputChange('state', e.target.value)}
-                  placeholder="e.g., Kano"
-                  className="bg-input/80 backdrop-blur-sm border-border/30"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Coordinates */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="lat" className="text-card-foreground font-medium">
-                  Latitude
-                </Label>
-                <Input
-                  id="lat"
-                  type="number"
-                  step="0.001"
-                  value={formData.lat || ''}
-                  onChange={(e) => handleInputChange('lat', parseFloat(e.target.value) || 0)}
-                  placeholder="e.g., 12.002"
-                  className="bg-input/80 backdrop-blur-sm border-border/30"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lon" className="text-card-foreground font-medium">
-                  Longitude
-                </Label>
-                <Input
-                  id="lon"
-                  type="number"
-                  step="0.001"
-                  value={formData.lon || ''}
-                  onChange={(e) => handleInputChange('lon', parseFloat(e.target.value) || 0)}
-                  placeholder="e.g., 8.523"
-                  className="bg-input/80 backdrop-blur-sm border-border/30"
-                  required
-                />
-              </div>
-            </div>
+            {/* Location Selector */}
+            <LocationSelector
+              onLocationSelect={handleLocationSelect}
+              initialLocation={selectedLocation}
+              className="col-span-2"
+            />
 
             {/* Crop and Category */}
             <div className="grid md:grid-cols-2 gap-4">
